@@ -61,6 +61,13 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
+        'qiniu' => [
+            'driver'     => 'qiniu',
+            'access_key' => env('QINIU_ACCESS_KEY', 'FaVCbalWF2XzoIrZxymr_4tip-LTptylhXGPczrv'),
+            'secret_key' => env('QINIU_SECRET_KEY', 'FwOjRfYt7HkGslIX-8ZR0tG92VsgS-q3-U5uQqUa'),
+            'bucket'     => env('QINIU_BUCKET', 'david'),
+            'domain'     => env('QINIU_DOMAIN', 'oozuu9hev.bkt.clouddn.com'),
+        ],
 
     ],
 

@@ -98,8 +98,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'unique' => '该邮箱已经注册',
+        ],
+        'password' => [
+            'confirmed' => '两次密码输入不一致',
         ],
     ],
 
