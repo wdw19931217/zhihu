@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','QuestionsController@index');
 
 Auth::routes();
 
@@ -25,3 +23,7 @@ Route::resource('questions','QuestionsController',['names' => [
     'create' => 'question.create',
     'show' => 'question.show'
 ]]);
+
+Route::post('questions/{question}/answer','AnswersController@store');
+
+Route::get('question/{question}/follow','QuestionFollowController@follow');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Mail;
@@ -40,5 +41,34 @@ class User extends Authenticatable
             $message->from('david19931217@gamil.com', 'zhihu');
             $message->to($this->email);
         });
+    }
+
+    public function owns(Model $model)
+    {
+        return $this->id == $model->user_id;
+    }
+
+    public function follows()
+    {
+//        return Follow::create([
+//            'question_id' => $question,
+//            'user_id' => $this->id
+//        ]);
+        return $this->belongsToMany(Question::class,'user_question')->withTimestamps();
+    }
+
+    public function followThis($question)
+    {
+        return $this->follows()->toggle($question);
+    }
+
+    public function followed($question)
+    {
+        return !! $this->follows()->where('question_id',$question)->count();
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }
