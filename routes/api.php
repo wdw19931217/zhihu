@@ -30,7 +30,7 @@ Route::post('/question/follower',function (Request $request) {
         return response()->json(['followed' => true]);
     }
         return response()->json(['followed' => false]);
-})->middleware('api');
+})->middleware('auth:api');
 
 Route::post('/question/follow',function (Request $request) {
     $followed = \App\Follow::where('question_id',$request->get('question'))
@@ -45,4 +45,4 @@ Route::post('/question/follow',function (Request $request) {
         'user_id' => $request->get('user'),
     ]);
     return response()->json(['followed' => true]);
-})->middleware('api');
+})->middleware('auth:api');
